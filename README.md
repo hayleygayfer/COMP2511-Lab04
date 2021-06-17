@@ -28,6 +28,8 @@ Refactor the code to use a **State Pattern** to model pieces in the chess game. 
 
 Implement the rule of Promotion within the `ChessGame` class.
 
+Before you start coding, create a UML Diagram which outlines the new structure of objects and relationships. You do not need getters or setters in this UML.
+
 ### Part 2 - Strategy Pattern
 
 We are going to begin building our very own Chess AI!
@@ -49,6 +51,22 @@ Black must respond by moving her own Queen pawn two spaces forward.
 White replies by bringing her queenside bishop's pawn two spaces forward.
 
 <img src='imgs/gambit3.png' />
+
+#### Starter Code
+
+#### Task
+
+Your task is to implement a Strategy Pattern for the making of moves by the `AIPlayer`, with the following strategies:
+
+1. The Queen's Gambit
+2. Another strategy out of the following: 
+    * The Sicilian Defence
+    * The Italian Game
+    * The French Defence
+    * The Ruy-Lopez
+    * The Slav Defence
+
+Model the pattern in your UML Diagram before writing any code.
 
 ### Challenge - The Mechanical Turk
 
