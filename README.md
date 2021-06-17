@@ -50,6 +50,9 @@ White replies by bringing her queenside bishop's pawn two spaces forward.
 
 <img src='imgs/gambit3.png' />
 
+### Challenge - The Mechanical Turk
+
+TBA
 
 ## Submission
 
