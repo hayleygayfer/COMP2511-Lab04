@@ -37,9 +37,9 @@ More specifically we can build the various states 'selecting region', 'drawing',
 
 > In reality you would probably implement some of these states as just booleans (i.e. ConstantAspectRatio) if they truly are that simple.
 
-The below list indicates a transition via `=>` and an action via `:`.  Your task is to represent this as either a state table (as per lectures) or as a state diagram (from 1531 if you find that more convenient).  To help you start the following image shows just a small section of the below requirements.
+The below list indicates a transition via `=>` and an action via `:`.  Your task is to represent this as either a state table (as per lectures) or as a state diagram (from 1531 if you find that more convenient).  To help you start the following image shows just a small section of the below requirements, you'll want to extend on this to add the rest.
 
-![Simplified State Diagram](imgs/SimplifiedStateDiagram.png)
+<img src="imgs/SimplifiedStateDiagram.png" height=600 />
 
 - SimpleState : Just a normal cursor state, x + y position is shown above the mouse cursor
 - PaintingState : A drawing tool was chosen such as freehand that has no drag enabled i.e. 'painting'
@@ -67,6 +67,8 @@ The below list indicates a transition via `=>` and an action via `:`.  Your task
   - `Ctrl` + `c` : Copy the region
   - `Ctrl` + `x` : Mark region as cut, should not be cleared until region is pasted
   - `Ctrl` + `v` If copied or cut : Paste region (clearing selected region if marked as copied) => SelectionState for new region (forget old region)
+
+ASHESH: Should we add an example state table for this too?
 
 > For simplicity the SimpleState `Esc` is implemented within the CanvasController and is external to the State Machine, you should still include it in your table / diagram.
 
