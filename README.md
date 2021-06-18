@@ -30,8 +30,16 @@ Quaint as explained in the tutorial is a paint application that has the followin
 - The ability to change colours using a colour wheel for the stroke freehand, ovals, rectangles
 - The ability to change stroke width between 10 and 100 pixels
 - The ability to select an optional fill colour for rectangles and ovals
+- The ability to scroll to change the stroke width
 - The ability to save my picture out as a png to a location of my choosing
-- Scroll should change the stroke width
+- The ability to select a region then perform operations on it, regions are selected via a box
+  - You can cut the region out using ctrl + x, a cut region shouldn't remove itself till it's pasted
+  - You can delete a region with ctrl + d
+  - You can copy a region with ctrl + c
+  - You can paste a cut or copied region with ctrl + v.  After deselecting the region (clicking anywhere or pressing escape) all copy history is lost.
+- The ability to load an image onto the canvas by clicking the image load tool, selecting the image you want to insert, then clicking where you want to insert it.
+  - After placing the image it should return to just the simple cursor.
+  - Scrolling should change how big the image being placed is scaled.
 
 More specifically we can build the various states 'selecting region', 'drawing', 'dragging', and so on as various different states.  Specifically the states are as follows;
 
