@@ -40,7 +40,7 @@ enum CodingLevel {
     Advanced,
     Pro,
     Expert,
-    Elite
+    Elite;
 }
 ```
 
@@ -59,7 +59,61 @@ This might seem slower than just doing it all in one go, but for larger systems,
 
 Remember to unit test individual components (`Hotel`, `Booking` classes and their methods) as well as the system working as a whole. You can modify/delete the provided test as you like.
 
-## Lab 04 - Exercise - The Queen's Gambit
+## Lab 04 - Exercise - State Diagram / Table for Quaint
+
+Quaint as explained in the tutorial is a paint application that has the following requirements;
+
+- The ability to 'freehand' draw on a canvas
+- The ability to draw rectangles by dragging out a region using my mouse
+- The ability to draw ovals by selecting a start point then dragging out to expand the radius
+- Hold shift to cause ovals & rectangles to have a 1:1 aspect ratio i.e. width = height (i.e. squares & circles)
+- The ability to use a square eraser to remove mistakes
+- The ability to change colours using a colour wheel for the stroke freehand, ovals, rectangles
+- The ability to change stroke width between 10 and 100 pixels
+- The ability to select an optional fill colour for rectangles and ovals
+- The ability to save my picture out as a png to a location of my choosing
+- Scroll should change the stroke width
+
+More specifically we can build the various states 'selecting region', 'drawing', 'dragging', and so on as various different states.  Specifically the states are as follows;
+
+> In reality you would probably implement some of these states as just booleans (i.e. ConstantAspectRatio) if they truly are that simple.
+
+The below list indicates a transition via `=>` and an action via `:`.  Your task is to represent this as either a state table (as per lectures) or as a state diagram (from 1531 if you find that more convenient).  To help you start the following image shows just a small section of the below requirements.
+
+
+
+- SimpleState : Just a normal cursor state, x + y position is shown above the mouse cursor
+- PaintingState : A drawing tool was chosen such as freehand that has no drag enabled i.e. 'painting'
+  - `Esc` => SimpleState
+  - Pressing `Secondary Mouse Button` : Toggles between eraser tool and painting tool.
+- CanvasActionState : A specialised drawing state that ends after a single 'action' i.e. placing an image or taking a colour from the canvas
+  - `Esc` => SimpleState
+  - Pressing `Primary Mouse Button` : Triggers action => SimpleState
+- ShapeState : A drawing tool was chosen that enabled dragging over a region to define a shape.
+  - `Esc` => SimpleState
+  - `Primary Mouse Button` => DraggingState
+  - `Shift` + `Primary Mouse Button` => ConstantAspectRatioDraggingState
+- DraggingState : Represents a dragging operation with an action to perform after the drag has finished
+  - `Shift` => ConstantAspectRatioDraggingState
+  - `Esc` => SimpleState
+  - If tool = box-select : action => SelectionState
+- ConstantAspectRatioDraggingState : Represents a dragging operation where width = height = min(width, height)
+  - Abscense of `Shift` (i.e. no longer holding the key down) => DraggingState
+  - `Esc` => SimpleState
+  - If tool = box-select : action => SelectionState
+- SelectionState : A region has been selected and you can move that region around by clicking on it and dragging it around.
+  - Clicking outside selection => State prior to this operation (i.e. ShapeState for box-select)
+    - Will clear all copy/cut history
+  - `Ctrl` + `d` : Clear out selection => State prior to this operation (i.e. ShapeState for box-select)
+  - `Ctrl` + `c` : Copy the region
+  - `Ctrl` + `x` : Mark region as cut, should not be cleared until region is pasted
+  - `Ctrl` + `v` If copied or cut : Paste region (clearing selected region if marked as copied) => SelectionState for new region (forget old region)
+
+> For simplicity the SimpleState `Esc` is implemented within the CanvasController and is external to the State Machine, you should still include it in your table / diagram.
+
+## Lab 04 - Exercise - The Crown's Gambit
+
+
 
 ### Part 1 - State Pattern
 
