@@ -100,7 +100,7 @@ TODO: Img showing crown + jumps
 
 A player loses once they no longer have any more checkers available.
 
-There are a few additional 'options' that are configurable upon defining a new game, you should add a checkbox to the main menu to represent them;
+There are a few additional 'options' that are configurable upon defining a new game, there are already checkboxes in the start game screen to represent this.
 
 - `Force Jump` if this is set then the player should be forced to take a jump if it's available.
 - `The Quackering` randomly causes half the pieces to develop madness... where they can jump over 2 pieces which are placed diagonally sequential (as per the image below) BUT they can't chain jumps and still require an empty space after the 2 pieces.  These pieces should use the asset `mad-red.png` and `mad-white.png` respectively.
