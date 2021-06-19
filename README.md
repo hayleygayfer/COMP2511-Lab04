@@ -142,10 +142,12 @@ It's a 2 player game, in our version the pieces are red and white to represent t
 Each player takes their turn by moving a single piece diagonally forwards (towards the opponent) to the next dark square.
 
 If there is a piece diagonally adjacent to one of your checkers you can 'jump' over that piece to the empty square on the other side.
-  - If there isn't an empty square (i.e. 2 of red's pieces are placed diagonally adjacent) then you can't jump over both of them at the same time.
+  - If there isn't an empty square (i.e. 2 of red's pieces are placed diagonally adjacent) then you can't jump over both of them at the same time, capturing the piece
   - However, you can perform multiple jumps in a single turn given that there is an empty space between each piece.
 
 <img src="imgs/jumping.png" height=300 />
+
+Purple denotes possible finishing positions, silver marks squares that don't end your turn since another capture is available.  `Force Capture` ALWAYS applies for chained captures, the option is just toggable for that 'first' capture.
 
 If a piece makes it all the way to the end it 'crowns' gaining a unique symbol and the ability to move in both directions (forwards and backwards).
 
@@ -153,7 +155,7 @@ A player loses once they no longer have any more checkers available.
 
 There are a few additional 'options' that are configurable upon defining a new game, there are already checkboxes in the start game screen to represent this.
 
-- `Force Jump` if this is set then the player should be forced to take a jump if it's available.
+- `Force Capture` if this is set then the player should be forced to take a capture if it's available.
 - `The Quackering` randomly causes half the pieces to develop madness... where they can jump over 2 pieces which are placed diagonally sequential (as per the image below) BUT they can't chain jumps and still require an empty space after the 2 pieces.  Checker.java already has some code to render Checkers that are marked as `mad = true`.
 
 Your task is to refactor the code such that it uses the strategy pattern to implement both the rendering of the checkers (i.e. the drawing of the circles) as well as the logic for which positions are valid.
