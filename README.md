@@ -135,7 +135,7 @@ ASHESH: Should we add an example state table for this too?
 
 Checkers is a classic game with some relatively simple rules.  An example board looks like below
 
-<img src="imgs/checkers.png" height=600 />
+<img src="imgs/checkers.png" height=300 />
 
 It's a 2 player game, in our version the pieces are red and white to represent the two different players.  Red goes first.
 
@@ -145,18 +145,25 @@ If there is a piece diagonally adjacent to one of your checkers you can 'jump' o
   - If there isn't an empty square (i.e. 2 of red's pieces are placed diagonally adjacent) then you can't jump over both of them at the same time.
   - However, you can perform multiple jumps in a single turn given that there is an empty space between each piece.
 
-If a piece makes it all the way to the end it 'crowns' gaining a unique symbol and the ability to move in both directions (forwards and backwards).
+<img src="imgs/jumping.png" height=300 />
 
-TODO: Img showing crown + jumps
+If a piece makes it all the way to the end it 'crowns' gaining a unique symbol and the ability to move in both directions (forwards and backwards).
 
 A player loses once they no longer have any more checkers available.
 
 There are a few additional 'options' that are configurable upon defining a new game, there are already checkboxes in the start game screen to represent this.
 
 - `Force Jump` if this is set then the player should be forced to take a jump if it's available.
-- `The Quackering` randomly causes half the pieces to develop madness... where they can jump over 2 pieces which are placed diagonally sequential (as per the image below) BUT they can't chain jumps and still require an empty space after the 2 pieces.  These pieces should use the asset `mad-red.png` and `mad-white.png` respectively.
+- `The Quackering` randomly causes half the pieces to develop madness... where they can jump over 2 pieces which are placed diagonally sequential (as per the image below) BUT they can't chain jumps and still require an empty space after the 2 pieces.  Checker.java already has some code to render Checkers that are marked as `mad = true`.
 
-TODO: Img for quackering + force jump
+Your task is to refactor the code such that it uses the strategy pattern to implement both the rendering of the checkers (i.e. the drawing of the circles) as well as the logic for which positions are valid.
+
+Hints:
+
+- Look at the unused interface `CheckerStrategy`.
+- A checker piece could have multiple strategies that it aggregates.
+- How are you going to handle force jump?
+- Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.
 
 ## Installing JavaFX on your own system
 
