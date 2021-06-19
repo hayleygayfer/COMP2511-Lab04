@@ -19,6 +19,10 @@ public class Checkerboard {
     public void moveChecker(Position position, Position endPosition) {
         if (isInBounds(position) && isInBounds(endPosition)) {
             board[endPosition.getCol()][endPosition.getRow()] = board[position.getCol()][position.getRow()];
+            if (endPosition.getRow() == 0 || endPosition.getRow() == BOARD_SIZE - 1) {
+                board[endPosition.getCol()][endPosition.getRow()].setCrowned();
+            }
+
             board[position.getCol()][position.getRow()] = null;
 
             Position midPoint = Position.midPointPosition(position, endPosition);

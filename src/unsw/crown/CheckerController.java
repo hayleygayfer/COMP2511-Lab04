@@ -143,7 +143,7 @@ public class CheckerController {
 
             // check if this jumps over a piece
             Checker c = board.getPieceAt(Position.midPointPosition(source, pos));
-            if (c != null && c.getColor().equals(checker.getColor()) == false) {
+            if (c != null) {
                 String color;
                 if (recursivelyAddCheckerPositions(checker, pos)) {
                     color = "silver";

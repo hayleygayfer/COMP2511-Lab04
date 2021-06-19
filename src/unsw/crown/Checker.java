@@ -11,11 +11,18 @@ import javafx.scene.shape.Polygon;
 
 public class Checker {
     private CheckerColor color;
+
+    // The goal is to remove these booleans.
     private boolean crowned = false;
     private boolean mad = false;
 
+    // you can modify the constructor in your solution.
     public Checker(CheckerColor color) {
         this.color = color;
+    }
+
+    public void setCrowned() {
+        this.crowned = true;
     }
 
     public CheckerColor getColor() {
@@ -30,7 +37,7 @@ public class Checker {
         Circle circle = new Circle(20, Paint.valueOf(color.getColor()));
         pane.getChildren().add(circle);
 
-        // keep the image data as is
+        // you don't have to write any JavaFX just move this code into your strategy pattern.
         if (mad) {
             Polygon poly = new Polygon(14, 26, 13.3, 26, 12.5, 26, 11.8, 25.9, 11.5, 25.7, 10.8, 25.4, 10.1, 25.1, 9.5,
                     24.7, 8.8, 24.4, 8.5, 24.2, 7.9, 23.8, 7.6, 23.1, 7.2, 22.5, 6.9, 21.8, 6.7, 21.5, 6.4, 20.8, 6.1,
