@@ -135,7 +135,7 @@ ASHESH: Should we add an example state table for this too?
 
 Checkers is a classic game with some relatively simple rules.  An example board looks like below
 
-TODO: Img
+<img src="imgs/checkers.png" height=600 />
 
 It's a 2 player game, in our version the pieces are red and white to represent the two different players.  Red goes first.
 
