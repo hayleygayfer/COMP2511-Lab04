@@ -18,9 +18,52 @@ An individual repository for you for this lab has been created for you on the CS
 
 `git clone gitlab@gitlab.cse.unsw.EDU.AU:COMP2511/21T2/students/z555555/21T2-cs2511-lab04.git`
 
-## Lab 04 - Exercise - State Diagram / Table for Quaint
+## Lab 04 - Exercise - Hotel Refactor 🏨
 
-Quaint as explained in the tutorial is a paint application that has the following requirements;
+Inside `src/refactor`, there is a poorly designed solution for a Hotel Booking System according to the following requirements:
+
+* Hotels have a name and a series of rooms
+* Rooms are of size Small, Medium or Large
+* Rooms can be booked from a start date to a checkout date
+* A user of the system can request a booking by specifying a start date, and end date and a room size. If the room is successfully booked, they receive the booking number. If there is no available room of the given size for those dates, `-1` is returned.
+
+### Refactoring
+
+Refactor the code so that it adheres to design principles taught in lectures. Be prepared to explain your design changes to your lab assistant during marking. 
+
+Things to consider include the Law of Demeter, Single Responsibility Principle, Open-Closed Principle, and using *enums*. An *enum* is a special sort class that represents a group of constants:
+
+```java
+enum CodingLevel {
+    Greenie,
+    Novice,
+    Amateur,
+    Intermediate,
+    Advanced,
+    Pro,
+    Expert,
+    Elite;
+}
+```
+
+### Test Driven Refactoring
+
+A very basic test is provided for you in `HotelBookingSystemTest.java` which currently passes. You should complete this exercise in the following order:
+
+1. Design a single refactor to the code
+2. Write out stubs for any new functions
+3. Write JUnit tests for those new functions (they should fail)
+4. Implement the functions so that the tests pass
+6. Commit your changes with a message explaining the refactor (your lab assistant will check this during marking)
+7. Repeat for each refactor!
+
+This might seem slower than just doing it all in one go, but for larger systems, incremental completion is the only way to go about it (everything becomes a huge mess otherwise).
+
+Remember to unit test individual components (`Hotel`, `Booking` classes and their methods) as well as the system working as a whole. You can modify/delete the provided test as you like.
+
+## Lab 04 - Exercise - The State of Quaint
+
+Quaint, as explained in the tutorial, is a paint application that has the following requirements;
 
 - The ability to 'freehand' draw on a canvas
 - The ability to draw rectangles by dragging out a region using my mouse
@@ -41,11 +84,19 @@ Quaint as explained in the tutorial is a paint application that has the followin
   - After placing the image it should return to just the simple cursor.
   - Scrolling should change how big the image being placed is scaled.
 
-More specifically we can build the various states 'selecting region', 'drawing', 'dragging', and so on as various different states.  Specifically the states are as follows;
+More specifically, we can build the various states 'selecting region', 'drawing', 'dragging', and so on as various different states.  Specifically the states are as follows;
 
-> In reality you would probably implement some of these states as just booleans (i.e. ConstantAspectRatio) if they truly are that simple.
+> In reality, you would probably implement some of these states as just booleans (i.e. ConstantAspectRatio) if they truly are that simple.
 
-The below list indicates a transition via `=>` and an action via `:`.  Your task is to represent this as either a state table (as per lectures) or as a state diagram (from 1531 if you find that more convenient).  To help you start the following image shows just a small section of the below requirements, you'll want to extend on this to add the rest.
+### Task
+
+Create a State Diagram **or** a State Table to represent the state transitions in this system. 
+
+If you need to brush up on State Diagrams, here is a [COMP1531 Lecture covering the material](https://youtu.be/ZJu5P9KlCn0?t=70).
+
+Alternatively, you can create a State Table (see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426)). 
+
+To help you start the following image shows just a small section of the below requirements modelled as a State Diagram. You will need to extend on this to incorporate the other requirements.
 
 <img src="imgs/SimplifiedStateDiagram.png" height=600 />
 
@@ -142,57 +193,12 @@ Note that if you deviate from this precise directory structure, you may need to 
 
 If these steps worked (and you setup java, and the recommended VSCode extensions properly), you should be able to run the starter code game.
 
-## Lab 04 - Challenge Exercise - Hotel Refactor 🏨
-
-> For extra practice of test driven refactoring.
-
-Inside `src/refactor`, there is a poorly designed solution for a Hotel Booking System according to the following requirements:
-
-* Hotels have a name and a series of rooms
-* Rooms are of size Small, Medium or Large
-* Rooms can be booked from a start date to a checkout date
-* A user of the system can request a booking by specifying a start date, and end date and a room size. If the room is successfully booked, they receive the booking number. If there is no available room of the given size for those dates, `-1` is returned.
-
-### Refactoring
-
-Refactor the code so that it adheres to design principles taught in lectures. Be prepared to explain your design changes to your lab assistant during marking. 
-
-Things to consider include the Law of Demeter, Single Responsibility Principle, Open-Closed Principle, and using *enums*. An *enum* is a special sort class that represents a group of constants:
-
-```java
-enum CodingLevel {
-    Greenie,
-    Novice,
-    Amateur,
-    Intermediate,
-    Advanced,
-    Pro,
-    Expert,
-    Elite;
-}
-```
-
-### Test Driven Refactoring
-
-A very basic test is provided for you in `HotelBookingSystemTest.java` which currently passes. You should complete this exercise in the following order:
-
-1. Design a single refactor to the code
-2. Write out stubs for any new functions
-3. Write JUnit tests for those new functions (they should fail)
-4. Implement the functions so that the tests pass
-6. Commit your changes with a message explaining the refactor (your lab assistant will check this during marking)
-7. Repeat for each refactor!
-
-This might seem slower than just doing it all in one go, but for larger systems, incremental completion is the only way to go about it (everything becomes a huge mess otherwise).
-
-Remember to unit test individual components (`Hotel`, `Booking` classes and their methods) as well as the system working as a whole. You can modify/delete the provided test as you like.
-
 ## Submission
 
 To submit, make a tag to show that your code at the current commit is ready for your submission using the command:
 
 ```bash
-$ git tag -fa submission -m "Submission for Lab-03"
+$ git tag -fa submission -m "Submission for Lab-04"
 $ git push -f origin submission
 ```
 
