@@ -61,7 +61,7 @@ This might seem slower than just doing it all in one go, but for larger systems,
 
 Remember to unit test individual components (`Hotel`, `Booking` classes and their methods) as well as the system working as a whole. You can modify/delete the provided test as you like.
 
-## Lab 04 - Exercise - The State of Quaint
+## Lab 04 - Exercise - The State of Quaint 🦆
 
 Quaint, as explained in the tutorial, is a paint application that has the following requirements;
 
@@ -131,7 +131,7 @@ ASHESH: Should we add an example state table for this too?
 
 > For simplicity the SimpleState `Esc` is implemented within the CanvasController and is external to the State Machine, you should still include it in your table / diagram.
 
-## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern
+## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern 👑
 
 Checkers is a classic game with some relatively simple rules.  An example board looks like below
 
