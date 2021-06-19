@@ -33,10 +33,8 @@ Quaint, as explained in the tutorial, is a paint application that has the follow
 - The ability to scroll to change the stroke width
 - The ability to save my picture out as a png to a location of my choosing
 - The ability to select a region then perform operations on it, regions are selected via a box
-  - You can cut the region out using ctrl + x, a cut region shouldn't remove itself till it's pasted
   - You can delete a region with ctrl + d
-  - You can copy a region with ctrl + c
-  - You can paste a cut or copied region with ctrl + v.  After deselecting the region (clicking anywhere or pressing escape) all copy history is lost.
+  - You can paste a region with ctrl + v, this won't clear the old region and will just paste a new region that is already selected at the cursor.
 - The ability to load an image onto the canvas by clicking the image load tool, selecting the image you want to insert, then clicking where you want to insert it.
   - After placing the image it should return to just the simple cursor.
   - Scrolling should change how big the image being placed is scaled.
