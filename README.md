@@ -147,7 +147,7 @@ If there is a piece diagonally adjacent to one of your checkers you can 'jump' o
 
 <img src="imgs/jumping.png" height=300 />
 
-Purple denotes possible finishing positions, silver marks squares that don't end your turn since another capture is available.  `Force Capture` ALWAYS applies for chained captures, the option is just toggable for that 'first' capture.
+Purple denotes possible finishing positions, silver marks squares that have another attached capture.  If you click on a silver square it will end your turn still, you'll want to click on the branching purple position to chain jumps.
 
 If a piece makes it all the way to the end it 'crowns' gaining a unique symbol and the ability to move in both directions (forwards and backwards).
 
