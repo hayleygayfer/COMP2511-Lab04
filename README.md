@@ -166,6 +166,7 @@ Hints:
 - A checker piece could have multiple strategies that it aggregates.
 - How are you going to handle force jump?
 - Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.
+- `forceJump.isSelected()` (and similar for quackering) can be used to determine if the checkbox is ticked.
 
 ## Installing JavaFX on your own system
 
