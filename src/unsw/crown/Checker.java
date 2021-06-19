@@ -72,7 +72,6 @@ public class Checker {
         }
 
         if (color.equals(CheckerColor.RED)) {
-            // top-left is 0,0 therefore we want to move 'down'
             if (board.isInBounds(position.upLeft())) {
                 Checker upLeft = board.getPieceAt(position.upLeft());
                 if (upLeft == null) {
@@ -85,7 +84,6 @@ public class Checker {
             }
             // and so on for up right.
         } else if (color.equals(CheckerColor.WHITE)) {
-            // top-left is 0,0 therefore we want to move 'down'
             if (board.isInBounds(position.downLeft())) {
                 Checker downLeft = board.getPieceAt(position.downLeft());
                 if (downLeft == null) {
