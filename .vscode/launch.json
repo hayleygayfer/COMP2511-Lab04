@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch CheckerApplication",
+            "request": "launch",
+            "mainClass": "unsw.crown.CheckerApplication",
+            "projectName": "lab04_acb2551e",
+            "vmArgs": "--module-path ./lib --add-modules javafx.controls,javafx.fxml,javafx.media -enableassertions"
+        }
+    ]
+}
