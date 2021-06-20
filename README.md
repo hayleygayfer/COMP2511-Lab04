@@ -193,7 +193,7 @@ If there is a piece diagonally adjacent to one of your checkers you can 'jump' o
 
 <img src="imgs/jumping.png" height=300 />
 
-Purple denotes possible finishing positions, silver marks squares that have another attached capture.  If you click on a silver square it will end your turn still, you'll want to click on the branching purple position to chain jumps.
+Note: That making a 'silver' move still ends your turn, the system will handle the multiple sequential jumps if you click on one of the purple squares that 'branches' off from it.
 
 If a piece makes it all the way to the end it 'crowns' gaining a unique symbol and the ability to move in both directions (forwards and backwards).
 
