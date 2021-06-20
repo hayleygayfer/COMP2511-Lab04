@@ -89,7 +89,7 @@ ShapeState
 ShapeState : A drawing tool was chosen that enabled dragging over a region to define a shape.
   - `Esc` => SimpleState
   - `Primary Mouse Button` => DraggingState
-  - `Shift` + `Primary Mouse Button` => ConstantAspectRatioDraggingState
+  - `Shift` + `Primary Mouse Button` => AspectRatioDraggingState
 
 </td>
 </tr>
@@ -101,7 +101,7 @@ DraggingState
 <td>
 
 Represents a dragging operation with an action to perform after the drag has finished
-  - `Shift` => ConstantAspectRatioDraggingState
+  - `Shift` => AspectRatioDraggingState
   - `Esc` => SimpleState
   - If tool = box-select and `Primary Mouse Button` released => SelectionState else => prior ShapeState
 
@@ -110,7 +110,7 @@ Represents a dragging operation with an action to perform after the drag has fin
 
 <tr>
 <td>
-ConstantAspectRatioDraggingState
+AspectRatioDraggingState (called ConstantAspectRatioDraggingState in the UML/Code)
 </td>
 <td>
 
@@ -151,7 +151,20 @@ To help you start the following image shows just a small section of the below re
 
 <img src="imgs/SimplifiedStateDiagram.png" height=600 />
 
+The table is as below;
 
++-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
+|            Action             |   Condition    | AspectRatioDragging |      Dragging       |        Shape        | Simple |  Selected   |
++-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
+| Shift Released                |                | ?     ?     ?       |                     |                     |        |             |
+| Shift Pressed                 |                |                     | AspectRatioDragging |                     |        |             |
+| Primary Mouse Button Pressed  | Shift Key Held |                     |                     | ?    ?      ?       |        |             |
+| Primary Mouse Button Pressed  |                |                     |                     | DraggingState       |        |             |
+| Primary Mouse Button Released |  ?   ?   ?     | SelectedState       | SelectedState       |                     |        |             |
+| Primary Mouse Button Released |                | ShapeState          | ?    ?    ?         |                     |        |             |
+| Escape Key                    |                | ?    ?   ?          | SimpleState         | SimpleState         |        | ?   ?   ?   |
+| Ctrl + D & Clicking Outside   |                |                     |                     |                     |        | ?   ?   ?   |
++-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
 
 ## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern 👑
 
