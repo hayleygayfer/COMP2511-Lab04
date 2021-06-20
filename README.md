@@ -187,7 +187,7 @@ It's a 2 player game, in our version the pieces are red and white to represent t
 
 Each player takes their turn by moving a single piece diagonally forwards (towards the opponent) to the next dark square.
 
-If there is a piece diagonally adjacent to one of your checkers you can 'jump' over that piece to the empty square on the other side.
+If there is a piece diagonally adjacent to one of your checkers you can 'jump' over that piece to the empty square on the other side.  You can only jump over enemy pieces.
   - If there isn't an empty square (i.e. 2 of red's pieces are placed diagonally adjacent) then you can't jump over both of them at the same time, capturing the piece
   - However, you can perform multiple jumps in a single turn given that there is an empty space between each piece.
 
@@ -199,9 +199,9 @@ If a piece makes it all the way to the end it 'crowns' gaining a unique symbol a
 
 A player loses once they no longer have any more checkers available.
 
-There are a few additional 'options' that are configurable upon defining a new game, there are already checkboxes in the start game screen to represent this.
+There are is a single options that is configurable upon defining a new game, there is already a checkbox in the start game screen to represent this.
 
-- `Force Capture` if this is set then the player should be forced to take a capture if it's available.
+- `Quackering` if this is set then every piece in the back row for both players goes mad, mad pieces are signified by a special symbol (as shown below) and *can* jump over your own pieces.  If your own piece gets jumped it doesn't get captured and instead just goes mad.  Crowned pieces can go mad (and mad pieces can get crowned).
 
 Your task is to refactor the code such that it uses the strategy pattern to implement both the rendering of the checkers (i.e. the drawing of the circles) as well as the logic for which positions are valid.
 
