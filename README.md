@@ -145,7 +145,7 @@ A region has been selected and you can move that region around by clicking on it
 
 Fill out a State Table to represent the state transitions in this system.  You'll notice that it only includes *some* of the states, we are only modelling the SelectionState, Dragging States, and Shape State / SimpleState the other states are unaffected.
 
-* Alternatively, you can create a State Table (see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426)). 
+* see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426) for another example.
 
 To help you start the following image shows just a small section of the below requirements modelled as a State Diagram.  This is just to help you see how the system interacts
 
