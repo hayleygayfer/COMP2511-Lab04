@@ -177,7 +177,9 @@ A region has been selected and you can move that region around by clicking on it
 
 ## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern 👑
 
-Checkers is a classic game with some relatively simple rules.  An example board looks like below
+For this exercise,  you need to refactor the code provided that already implements the following game "The Crown's Gambit". Please note that you need to use the Strategy pattern in your refactoring. In order to properly refactor your code, you need to first understand the rules of this interesting game, which are provided below. Considering the game is already implemented, in most of the cases you simply need to copy/paste the code. However, this exercise will demonstrate how you can improve your design by using a very useful Strategy Pattern. 
+
+Checkers is a classic game with some relatively simple rules.
 
 <img src="imgs/checkers.png" height=300 />
 
@@ -200,7 +202,6 @@ A player loses once they no longer have any more checkers available.
 There are a few additional 'options' that are configurable upon defining a new game, there are already checkboxes in the start game screen to represent this.
 
 - `Force Capture` if this is set then the player should be forced to take a capture if it's available.
-- `The Quackering` randomly causes half the pieces to develop madness... where they can jump over 2 pieces which are placed diagonally sequential (as per the image below) BUT they can't chain jumps and still require an empty space after the 2 pieces.  Checker.java already has some code to render Checkers that are marked as `mad = true`.
 
 Your task is to refactor the code such that it uses the strategy pattern to implement both the rendering of the checkers (i.e. the drawing of the circles) as well as the logic for which positions are valid.
 
@@ -211,7 +212,7 @@ Hints:
 - You don't have to write *ANY* JavaFX code here, you'll want to grab the code that renders the checkers and move it around but you won't have to change it.
 - How are you going to handle force jump?
 - Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.
-- `forceJump.isSelected()` (and similar for quackering) can be used to determine if the checkbox is ticked.
+- `forceJump.isSelected()` can be used to determine if the checkbox is ticked.
 
 ## Installing JavaFX on your own system
 
