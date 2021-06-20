@@ -203,9 +203,37 @@ Your task is to refactor the code such that it uses the strategy pattern to impl
 Hints:
 
 - Look at the unused interface `CheckerStrategy`.
-- A checker piece could have multiple strategies that it aggregates.
+- A checker piece could have multiple strategies that it aggregates, or it could just have a single strategy.
+  - If you are aggregating strategies; avoid designing your code so that you need to check if a position is *already* valid, your strategies should be disjoint.
+- Try to remove as much duplication as you can, especially in validPositions.
 - You don't have to write *ANY* JavaFX code here, you'll want to grab the code that renders the checkers and move it around but you won't have to change it.
 - Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.  Just focus on the jumps you can make from a given position.
+
+One final hint if you are really struggling (behind a spoiler just for those who want to push themselves):
+
+<details>
+<summary> A more substantial hint </summary>
+
+There is nothing stopping you from having a strategy 'hold' / 'wrap' around another strategy. i.e.
+
+```java
+public class A implements Strategy {
+  private Strategy inner;
+
+  public A(Strategy inner) {
+    this.inner = inner;
+  }
+
+  @Override
+  public int foo() {
+    return inner.foo() * 2;
+  }
+}
+```
+
+This way you could add / change how the inner function checks something, or just mutate it's result, or something inbetween.
+
+</details>
 
 ## Installing JavaFX on your own system
 
