@@ -22,37 +22,19 @@ An individual repository for you for this lab has been created for you on the CS
 
 Quaint, as explained in the tutorial, is a paint application that has the following requirements;
 
-- The ability to 'freehand' draw on a canvas
-- The ability to draw rectangles by dragging out a region using my mouse
-- The ability to draw ovals by selecting a start point then dragging out to expand the radius
-- Hold shift to cause ovals & rectangles to have a 1:1 aspect ratio i.e. width = height (i.e. squares & circles)
-- The ability to use a square eraser to remove mistakes
-- The ability to change colours using a colour wheel for the stroke freehand, ovals, rectangles
-- The ability to change stroke width between 10 and 100 pixels
-- The ability to select an optional fill colour for rectangles and ovals
-- The ability to scroll to change the stroke width
-- The ability to save my picture out as a png to a location of my choosing
+- The ability to draw shapes such as rectangles and ovals, you should be able to give shapes constant aspect ratios by holding shift while dragging
 - The ability to select a region then perform operations on it, regions are selected via a box
   - You can delete a region with ctrl + d
-  - You can paste a region with ctrl + v, this won't clear the old region and will just paste a new region that is already selected at the cursor.
+  - You can paste a region with ctrl + v, this won't clear the old region and will just paste it (i.e. copy + paste)
+- The ability to paint using a brush like tool
+- The ability to remove mistakes
+- The ability to save my picture out to a location of my choosing
 - The ability to load an image onto the canvas by clicking the image load tool, selecting the image you want to insert, then clicking where you want to insert it.
   - After placing the image it should return to just the simple cursor.
-  - Scrolling should change how big the image being placed is scaled.
+- The ability to change colours using a colour wheel for the strokes and shapes
+- A new pipette tool that appears next to the colour selector that lets you pick the stroke/fill colour based upon the canvas.
 
 More specifically, we can build the various states 'selecting region', 'drawing', 'dragging', and so on as various different states.  Specifically the states are as follows;
-
-> In reality, you would probably implement some of these states as just booleans (i.e. ConstantAspectRatio) if they truly are that simple.
-
-### Task
-
-Create a State Diagram **or** a State Table to represent the state transitions in this system. 
-
-* If you need to brush up on State Diagrams, here is a [COMP1531 Lecture covering the material](https://youtu.be/ZJu5P9KlCn0?t=691).
-* Alternatively, you can create a State Table (see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426)). 
-
-To help you start the following image shows just a small section of the below requirements modelled as a State Diagram. You will need to extend on this to incorporate the other requirements.
-
-<img src="imgs/SimplifiedStateDiagram.png" height=600 />
 
 State Table Descriptions
 
@@ -121,7 +103,7 @@ DraggingState
 Represents a dragging operation with an action to perform after the drag has finished
   - `Shift` => ConstantAspectRatioDraggingState
   - `Esc` => SimpleState
-  - If tool = box-select and `Primary Mouse Button` released => SelectionState
+  - If tool = box-select and `Primary Mouse Button` released => SelectionState else => prior ShapeState
 
 </td>
 </tr>
@@ -135,7 +117,7 @@ DraggingState
 Represents a dragging operation with an action to perform after the drag has finished
   - `Shift` => ConstantAspectRatioDraggingState
   - `Esc` => SimpleState
-  - If tool = box-select and `Primary Mouse Button` released => SelectionState
+  - If tool = box-select and `Primary Mouse Button` released => SelectionState else => prior ShapeState
 
 </td>
 </tr>
@@ -174,6 +156,18 @@ A region has been selected and you can move that region around by clicking on it
 </table>
 
 > For simplicity the SimpleState `Esc` is implemented within the CanvasController and is external to the State Machine, you should still include it in your table / diagram.
+
+### Task
+
+Fill out a State Table to represent the state transitions in this system.  You'll notice that it only includes *some* of the states, we are only modelling the SelectionState, Dragging States, and Shape State / SimpleState the other states are unaffected.
+
+* Alternatively, you can create a State Table (see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426)). 
+
+To help you start the following image shows just a small section of the below requirements modelled as a State Diagram.  This is just to help you see how the system interacts
+
+<img src="imgs/SimplifiedStateDiagram.png" height=600 />
+
+
 
 ## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern 👑
 
