@@ -203,6 +203,8 @@ There are is a single options that is configurable upon defining a new game, the
 
 - `Quackering` if this is set then every piece in the back row for both players goes mad, mad pieces are signified by a special symbol (as shown below) and *can* jump over your own pieces.  If your own piece gets jumped it doesn't get captured and instead just goes mad.  Crowned pieces can go mad (and mad pieces can get crowned).
 
+<img src="imgs/quackening.png" height=300 />
+
 Your task is to refactor the code such that it uses the strategy pattern to implement both the rendering of the checkers (i.e. the drawing of the circles) as well as the logic for which positions are valid.
 
 Hints:
