@@ -210,9 +210,7 @@ Hints:
 - Look at the unused interface `CheckerStrategy`.
 - A checker piece could have multiple strategies that it aggregates.
 - You don't have to write *ANY* JavaFX code here, you'll want to grab the code that renders the checkers and move it around but you won't have to change it.
-- How are you going to handle force jump?
-- Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.
-- `forceJump.isSelected()` can be used to determine if the checkbox is ticked.
+- Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.  Just focus on the jumps you can make from a given position.
 
 ## Installing JavaFX on your own system
 
