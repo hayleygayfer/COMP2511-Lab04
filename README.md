@@ -55,26 +55,115 @@ To help you start the following image shows just a small section of the below re
 
 <img src="imgs/SimplifiedStateDiagram.png" height=600 />
 
-- SimpleState : Just a normal cursor state, x + y position is shown above the mouse cursor
-- PaintingState : A drawing tool was chosen such as freehand that has no drag enabled i.e. 'painting'
+State Table Descriptions
+
+<table>
+<th>
+<td>
+State
+</td>
+<td>
+Description
+</td>
+</th>
+<tr>
+<td>
+SimpleState
+</td>
+<td>
+Just a normal cursor state, x + y position is shown above the mouse cursor
+</td>
+</tr>
+
+<tr>
+<td>
+PaintingState
+</td>
+<td>
+
+A drawing tool was chosen such as freehand that has no drag enabled i.e. 'painting'
   - `Esc` => SimpleState
   - Pressing `Secondary Mouse Button` : Toggles between eraser tool and painting tool.
-- CanvasActionState : A specialised drawing state that ends after a single 'action' i.e. placing an image or taking a colour from the canvas
+
+</td>
+</tr>
+
+<tr>
+<td>
+CanvasActionState
+</td>
+<td>
+
+A specialised drawing state that ends after a single 'action' i.e. placing an image or taking a colour from the canvas
   - `Esc` => SimpleState
   - Pressing `Primary Mouse Button` : Triggers action => SimpleState
-- ShapeState : A drawing tool was chosen that enabled dragging over a region to define a shape.
+
+</td>
+</tr>
+
+<tr>
+<td>
+ShapeState
+</td>
+<td>
+
+ShapeState : A drawing tool was chosen that enabled dragging over a region to define a shape.
   - `Esc` => SimpleState
   - `Primary Mouse Button` => DraggingState
   - `Shift` + `Primary Mouse Button` => ConstantAspectRatioDraggingState
-- DraggingState : Represents a dragging operation with an action to perform after the drag has finished
+
+</td>
+</tr>
+
+<tr>
+<td>
+DraggingState
+</td>
+<td>
+
+Represents a dragging operation with an action to perform after the drag has finished
   - `Shift` => ConstantAspectRatioDraggingState
   - `Esc` => SimpleState
   - If tool = box-select and `Primary Mouse Button` released => SelectionState
-- ConstantAspectRatioDraggingState : Represents a dragging operation where width = height = min(width, height)
+
+</td>
+</tr>
+
+<tr>
+<td>
+DraggingState
+</td>
+<td>
+
+Represents a dragging operation with an action to perform after the drag has finished
+  - `Shift` => ConstantAspectRatioDraggingState
+  - `Esc` => SimpleState
+  - If tool = box-select and `Primary Mouse Button` released => SelectionState
+
+</td>
+</tr>
+
+<tr>
+<td>
+ConstantAspectRatioDraggingState
+</td>
+<td>
+
+Represents a dragging operation where width = height = min(width, height)
   - Abscense of `Shift` (i.e. no longer holding the key down) => DraggingState
   - `Esc` => SimpleState
   - If tool = box-select and `Primary Mouse Button` released => SelectionState
-- SelectionState : A region has been selected and you can move that region around by clicking on it and dragging it around.
+
+</td>
+</tr>
+
+<tr>
+<td>
+SelectionState
+</td>
+<td>
+
+A region has been selected and you can move that region around by clicking on it and dragging it around.
   - Clicking outside selection => State prior to this operation (i.e. ShapeState for box-select)
     - Will clear all copy/cut history
   - `Ctrl` + `d` : Clear out selection => State prior to this operation (i.e. ShapeState for box-select)
@@ -82,7 +171,10 @@ To help you start the following image shows just a small section of the below re
   - `Ctrl` + `x` : Mark region as cut, should not be cleared until region is pasted
   - `Ctrl` + `v` If copied or cut : Paste region (clearing selected region if marked as copied) => SelectionState for new region (forget old region)
 
-ASHESH: Should we add an example state table for this too?
+</td>
+</tr>
+
+</table>
 
 > For simplicity the SimpleState `Esc` is implemented within the CanvasController and is external to the State Machine, you should still include it in your table / diagram.
 
