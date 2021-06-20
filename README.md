@@ -132,9 +132,7 @@ A region has been selected and you can move that region around by clicking on it
   - Clicking outside selection => State prior to this operation (i.e. ShapeState for box-select)
     - Will clear all copy/cut history
   - `Ctrl` + `d` : Clear out selection => State prior to this operation (i.e. ShapeState for box-select)
-  - `Ctrl` + `c` : Copy the region
-  - `Ctrl` + `x` : Mark region as cut, should not be cleared until region is pasted
-  - `Ctrl` + `v` If copied or cut : Paste region (clearing selected region if marked as copied) => SelectionState for new region (forget old region)
+  - `Ctrl` + `v` : Paste region (clearing selected region if marked as copied)
 
 </td>
 </tr>
