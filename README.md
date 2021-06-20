@@ -153,6 +153,7 @@ To help you start the following image shows just a small section of the below re
 
 The table is as below;
 
+```
 +-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
 |            Action             |   Condition    | AspectRatioDragging |      Dragging       |        Shape        | Simple |  Selected   |
 +-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
@@ -165,6 +166,7 @@ The table is as below;
 | Escape Key                    |                | ?    ?   ?          | SimpleState         | SimpleState         |        | ?   ?   ?   |
 | Ctrl + D & Clicking Outside   |                |                     |                     |                     |        | ?   ?   ?   |
 +-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
+```
 
 ## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern 👑
 
