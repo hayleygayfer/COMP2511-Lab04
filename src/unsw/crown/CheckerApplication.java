@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author Braedon Wooding, and @your name
+ */
 public class CheckerApplication extends Application {
     public static void main(String[] args) {
         launch(args);

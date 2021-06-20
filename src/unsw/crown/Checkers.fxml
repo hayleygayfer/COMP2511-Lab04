@@ -21,7 +21,6 @@
           <Insets top="5" />
         </padding>
         <children>
-          <CheckBox HBox.hgrow="ALWAYS" mnemonicParsing="false" text="Force Jump" fx:id="forceJump"></CheckBox>
           <CheckBox HBox.hgrow="ALWAYS" mnemonicParsing="false" text="The Quackering" fx:id="quackering"></CheckBox>
         </children>
       </HBox>

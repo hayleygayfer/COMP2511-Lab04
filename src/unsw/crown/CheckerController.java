@@ -26,15 +26,15 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+/**
+ * @author Braedon Wooding, and @your name
+ */
 public class CheckerController {
     @FXML
     public GridPane grid;
 
     @FXML
     public HBox startMenu;
-
-    @FXML
-    public CheckBox forceJump;
 
     @FXML
     public CheckBox quackering;
@@ -137,13 +137,14 @@ public class CheckerController {
 
     private boolean recursivelyAddCheckerPositions(Checker checker, Position source) {
         List<Position> positions = checker.validPositions(board, source);
+        int validJumps = 0;
         for (Position pos : positions) {
             possiblePredecessors.putIfAbsent(pos, new HashSet<>());
             possiblePredecessors.get(pos).add(source);
 
             // check if this jumps over a piece
             Checker c = board.getPieceAt(Position.midPointPosition(source, pos));
-            if (c != null) {
+            if (c != null && c != checker) {
                 String color;
                 if (recursivelyAddCheckerPositions(checker, pos)) {
                     color = "silver";
@@ -151,11 +152,12 @@ public class CheckerController {
                     color = "purple";
                 }
                 addPossiblePosition(pos, color);
-            } else {
+                validJumps++;
+            } else if (board.getPieceAt(source) != null) {
                 addPossiblePosition(pos, "purple");
             }
         }
-        return positions.size() > 0;
+        return validJumps++;
     }
 
     private void addPossiblePosition(Position pos, String color) {
@@ -201,7 +203,7 @@ public class CheckerController {
             this.gameButton.setText("Stop Game");
             turn = CheckerColor.RED;
             this.startMenu.setVisible(false);
-            board = new Checkerboard();
+            board = new Checkerboard(quackering.isSelected());
             grid.setAlignment(Pos.CENTER);
             generateGrid();
         } else {
