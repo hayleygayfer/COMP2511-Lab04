@@ -47,9 +47,8 @@ More specifically, we can build the various states 'selecting region', 'drawing'
 
 Create a State Diagram **or** a State Table to represent the state transitions in this system. 
 
-If you need to brush up on State Diagrams, here is a [COMP1531 Lecture covering the material](https://youtu.be/ZJu5P9KlCn0?t=70).
-
-Alternatively, you can create a State Table (see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426)). 
+* If you need to brush up on State Diagrams, here is a [COMP1531 Lecture covering the material](https://youtu.be/ZJu5P9KlCn0?t=691).
+* Alternatively, you can create a State Table (see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426)). 
 
 To help you start the following image shows just a small section of the below requirements modelled as a State Diagram. You will need to extend on this to incorporate the other requirements.
 
