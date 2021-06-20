@@ -22,73 +22,157 @@ An individual repository for you for this lab has been created for you on the CS
 
 Quaint, as explained in the tutorial, is a paint application that has the following requirements;
 
-- The ability to 'freehand' draw on a canvas
-- The ability to draw rectangles by dragging out a region using my mouse
-- The ability to draw ovals by selecting a start point then dragging out to expand the radius
-- Hold shift to cause ovals & rectangles to have a 1:1 aspect ratio i.e. width = height (i.e. squares & circles)
-- The ability to use a square eraser to remove mistakes
-- The ability to change colours using a colour wheel for the stroke freehand, ovals, rectangles
-- The ability to change stroke width between 10 and 100 pixels
-- The ability to select an optional fill colour for rectangles and ovals
-- The ability to scroll to change the stroke width
-- The ability to save my picture out as a png to a location of my choosing
+- The ability to draw shapes such as rectangles and ovals, you should be able to give shapes constant aspect ratios by holding shift while dragging
 - The ability to select a region then perform operations on it, regions are selected via a box
   - You can delete a region with ctrl + d
-  - You can paste a region with ctrl + v, this won't clear the old region and will just paste a new region that is already selected at the cursor.
+  - You can paste a region with ctrl + v, this won't clear the old region and will just paste it (i.e. copy + paste)
+- The ability to paint using a brush like tool
+- The ability to remove mistakes
+- The ability to save my picture out to a location of my choosing
 - The ability to load an image onto the canvas by clicking the image load tool, selecting the image you want to insert, then clicking where you want to insert it.
   - After placing the image it should return to just the simple cursor.
-  - Scrolling should change how big the image being placed is scaled.
+- The ability to change colours using a colour wheel for the strokes and shapes
+- A new pipette tool that appears next to the colour selector that lets you pick the stroke/fill colour based upon the canvas.
 
 More specifically, we can build the various states 'selecting region', 'drawing', 'dragging', and so on as various different states.  Specifically the states are as follows;
 
-> In reality, you would probably implement some of these states as just booleans (i.e. ConstantAspectRatio) if they truly are that simple.
+State Table Descriptions
 
-### Task
+<table>
+<th>
+State
+</th>
+<th>
+Description
+</th>
+<tr>
+<td>
+SimpleState
+</td>
+<td>
+Just a normal cursor state, x + y position is shown above the mouse cursor
+</td>
+</tr>
 
-Create a State Diagram **or** a State Table to represent the state transitions in this system. 
+<tr>
+<td>
+PaintingState
+</td>
+<td>
 
-If you need to brush up on State Diagrams, here is a [COMP1531 Lecture covering the material](https://youtu.be/ZJu5P9KlCn0?t=70).
-
-Alternatively, you can create a State Table (see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426)). 
-
-To help you start the following image shows just a small section of the below requirements modelled as a State Diagram. You will need to extend on this to incorporate the other requirements.
-
-<img src="imgs/SimplifiedStateDiagram.png" height=600 />
-
-- SimpleState : Just a normal cursor state, x + y position is shown above the mouse cursor
-- PaintingState : A drawing tool was chosen such as freehand that has no drag enabled i.e. 'painting'
+A drawing tool was chosen such as freehand that has no drag enabled i.e. 'painting'
   - `Esc` => SimpleState
   - Pressing `Secondary Mouse Button` : Toggles between eraser tool and painting tool.
-- CanvasActionState : A specialised drawing state that ends after a single 'action' i.e. placing an image or taking a colour from the canvas
+
+</td>
+</tr>
+
+<tr>
+<td>
+CanvasActionState
+</td>
+<td>
+
+A specialised drawing state that ends after a single 'action' i.e. placing an image or taking a colour from the canvas
   - `Esc` => SimpleState
   - Pressing `Primary Mouse Button` : Triggers action => SimpleState
-- ShapeState : A drawing tool was chosen that enabled dragging over a region to define a shape.
+
+</td>
+</tr>
+
+<tr>
+<td>
+ShapeState
+</td>
+<td>
+
+ShapeState : A drawing tool was chosen that enabled dragging over a region to define a shape.
   - `Esc` => SimpleState
   - `Primary Mouse Button` => DraggingState
-  - `Shift` + `Primary Mouse Button` => ConstantAspectRatioDraggingState
-- DraggingState : Represents a dragging operation with an action to perform after the drag has finished
-  - `Shift` => ConstantAspectRatioDraggingState
+  - `Shift` + `Primary Mouse Button` => AspectRatioDraggingState
+
+</td>
+</tr>
+
+<tr>
+<td>
+DraggingState
+</td>
+<td>
+
+Represents a dragging operation with an action to perform after the drag has finished
+  - `Shift` => AspectRatioDraggingState
   - `Esc` => SimpleState
-  - If tool = box-select and `Primary Mouse Button` released => SelectionState
-- ConstantAspectRatioDraggingState : Represents a dragging operation where width = height = min(width, height)
+  - If tool = box-select and `Primary Mouse Button` released => SelectionState else => prior ShapeState
+
+</td>
+</tr>
+
+<tr>
+<td>
+AspectRatioDraggingState (called ConstantAspectRatioDraggingState in the UML/Code)
+</td>
+<td>
+
+Represents a dragging operation where width = height = min(width, height)
   - Abscense of `Shift` (i.e. no longer holding the key down) => DraggingState
   - `Esc` => SimpleState
-  - If tool = box-select and `Primary Mouse Button` released => SelectionState
-- SelectionState : A region has been selected and you can move that region around by clicking on it and dragging it around.
+  - If tool = box-select and `Primary Mouse Button` released => SelectionState else => prior ShapeState
+
+</td>
+</tr>
+
+<tr>
+<td>
+SelectionState
+</td>
+<td>
+
+A region has been selected and you can move that region around by clicking on it and dragging it around.
   - Clicking outside selection => State prior to this operation (i.e. ShapeState for box-select)
     - Will clear all copy/cut history
   - `Ctrl` + `d` : Clear out selection => State prior to this operation (i.e. ShapeState for box-select)
-  - `Ctrl` + `c` : Copy the region
-  - `Ctrl` + `x` : Mark region as cut, should not be cleared until region is pasted
-  - `Ctrl` + `v` If copied or cut : Paste region (clearing selected region if marked as copied) => SelectionState for new region (forget old region)
+  - `Ctrl` + `v` : Paste region (clearing selected region if marked as copied)
 
-ASHESH: Should we add an example state table for this too?
+</td>
+</tr>
+
+</table>
 
 > For simplicity the SimpleState `Esc` is implemented within the CanvasController and is external to the State Machine, you should still include it in your table / diagram.
 
+### Task
+
+Fill out a State Table to represent the state transitions in this system.  You'll notice that it only includes *some* of the states, we are only modelling the SelectionState, Dragging States, and Shape State / SimpleState the other states are unaffected.
+
+* see [Slide 8 of the lecture slides on the State Pattern](https://webcms3.cse.unsw.edu.au/COMP2511/21T2/resources/61426) for another example.
+
+To help you start the following image shows just a small section of the below requirements modelled as a State Diagram.  This is just to help you see how the system interacts
+
+<img src="imgs/SimplifiedStateDiagram.png" height=600 />
+
+The table is as below;
+
+```
++-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
+|            Action             |   Condition    | AspectRatioDragging |      Dragging       |        Shape        | Simple |  Selected   |
++-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
+| Shift Released                |                | ?     ?     ?       |                     |                     |        |             |
+| Shift Pressed                 |                |                     | AspectRatioDragging |                     |        |             |
+| Primary Mouse Button Pressed  | Shift Key Held |                     |                     | ?    ?      ?       |        |             |
+| Primary Mouse Button Pressed  |                |                     |                     | DraggingState       |        |             |
+| Primary Mouse Button Released |  ?   ?   ?     | SelectedState       | SelectedState       |                     |        |             |
+| Primary Mouse Button Released |                | ShapeState          | ?    ?    ?         |                     |        |             |
+| Escape Key                    |                | ?    ?   ?          | SimpleState         | SimpleState         |        | ?   ?   ?   |
+| Ctrl + D & Clicking Outside   |                |                     |                     |                     |        | ?   ?   ?   |
++-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
+```
+
 ## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern 👑
 
-Checkers is a classic game with some relatively simple rules.  An example board looks like below
+For this exercise,  you need to refactor the code provided that already implements the following game "The Crown's Gambit". Please note that you need to use the Strategy pattern in your refactoring. In order to properly refactor your code, you need to first understand the rules of this interesting game, which are provided below. Considering the game is already implemented, in most of the cases you simply need to copy/paste the code. However, this exercise will demonstrate how you can improve your design by using a very useful Strategy Pattern. 
+
+Checkers is a classic game with some relatively simple rules.
 
 <img src="imgs/checkers.png" height=300 />
 
@@ -96,22 +180,23 @@ It's a 2 player game, in our version the pieces are red and white to represent t
 
 Each player takes their turn by moving a single piece diagonally forwards (towards the opponent) to the next dark square.
 
-If there is a piece diagonally adjacent to one of your checkers you can 'jump' over that piece to the empty square on the other side.
+If there is a piece diagonally adjacent to one of your checkers you can 'jump' over that piece to the empty square on the other side.  You can only jump over enemy pieces.
   - If there isn't an empty square (i.e. 2 of red's pieces are placed diagonally adjacent) then you can't jump over both of them at the same time, capturing the piece
   - However, you can perform multiple jumps in a single turn given that there is an empty space between each piece.
 
 <img src="imgs/jumping.png" height=300 />
 
-Purple denotes possible finishing positions, silver marks squares that have another attached capture.  If you click on a silver square it will end your turn still, you'll want to click on the branching purple position to chain jumps.
+Note: That making a 'silver' move still ends your turn, the system will handle the multiple sequential jumps if you click on one of the purple squares that 'branches' off from it.
 
 If a piece makes it all the way to the end it 'crowns' gaining a unique symbol and the ability to move in both directions (forwards and backwards).
 
 A player loses once they no longer have any more checkers available.
 
-There are a few additional 'options' that are configurable upon defining a new game, there are already checkboxes in the start game screen to represent this.
+There are is a single options that is configurable upon defining a new game, there is already a checkbox in the start game screen to represent this.
 
-- `Force Capture` if this is set then the player should be forced to take a capture if it's available.
-- `The Quackering` randomly causes half the pieces to develop madness... where they can jump over 2 pieces which are placed diagonally sequential (as per the image below) BUT they can't chain jumps and still require an empty space after the 2 pieces.  Checker.java already has some code to render Checkers that are marked as `mad = true`.
+- `Quackering` if this is set then every piece in the back row for both players goes mad, mad pieces are signified by a special symbol (as shown below) and *can* jump over your own pieces.  If your own piece gets jumped it doesn't get captured and instead just goes mad.  Crowned pieces can go mad (and mad pieces can get crowned).
+
+<img src="imgs/quackening.png" height=300 />
 
 Your task is to refactor the code such that it uses the strategy pattern to implement both the rendering of the checkers (i.e. the drawing of the circles) as well as the logic for which positions are valid.
 
@@ -120,9 +205,7 @@ Hints:
 - Look at the unused interface `CheckerStrategy`.
 - A checker piece could have multiple strategies that it aggregates.
 - You don't have to write *ANY* JavaFX code here, you'll want to grab the code that renders the checkers and move it around but you won't have to change it.
-- How are you going to handle force jump?
-- Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.
-- `forceJump.isSelected()` (and similar for quackering) can be used to determine if the checkbox is ticked.
+- Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.  Just focus on the jumps you can make from a given position.
 
 ## Installing JavaFX on your own system
 
