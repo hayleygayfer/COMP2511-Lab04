@@ -59,12 +59,10 @@ State Table Descriptions
 
 <table>
 <th>
-<td>
 State
-</td>
-<td>
+</th>
+<th>
 Description
-</td>
 </th>
 <tr>
 <td>
