@@ -110,20 +110,6 @@ Represents a dragging operation with an action to perform after the drag has fin
 
 <tr>
 <td>
-DraggingState
-</td>
-<td>
-
-Represents a dragging operation with an action to perform after the drag has finished
-  - `Shift` => ConstantAspectRatioDraggingState
-  - `Esc` => SimpleState
-  - If tool = box-select and `Primary Mouse Button` released => SelectionState else => prior ShapeState
-
-</td>
-</tr>
-
-<tr>
-<td>
 ConstantAspectRatioDraggingState
 </td>
 <td>
@@ -131,7 +117,7 @@ ConstantAspectRatioDraggingState
 Represents a dragging operation where width = height = min(width, height)
   - Abscense of `Shift` (i.e. no longer holding the key down) => DraggingState
   - `Esc` => SimpleState
-  - If tool = box-select and `Primary Mouse Button` released => SelectionState
+  - If tool = box-select and `Primary Mouse Button` released => SelectionState else => prior ShapeState
 
 </td>
 </tr>
