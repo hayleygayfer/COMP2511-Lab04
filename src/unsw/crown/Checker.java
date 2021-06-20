@@ -9,6 +9,9 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
+/**
+ * @author Braedon Wooding, and @your name
+ */
 public class Checker {
     private CheckerColor color;
 
@@ -17,8 +20,9 @@ public class Checker {
     private boolean mad = false;
 
     // you can modify the constructor in your solution.
-    public Checker(CheckerColor color) {
+    public Checker(CheckerColor color, boolean mad) {
         this.color = color;
+        this.mad = mad;
     }
 
     public void setCrowned() {
@@ -72,18 +76,12 @@ public class Checker {
         // an object? Look at CheckerStrategy to see what a single strategy
         // may look like.
 
-        if (mad && board.isInBoundsAndEmpty(position)) {
-            // this is a jump check.
-            // Mad can't jump more than once, so ignore.
-            return positions;
-        }
-
         if (color.equals(CheckerColor.RED)) {
             if (board.isInBounds(position.upLeft())) {
                 Checker upLeft = board.getPieceAt(position.upLeft());
                 if (upLeft == null) {
                     positions.add(position.upLeft());
-                } else if (!upLeft.getColor().equals(color)) {
+                } else if (!upLeft.getColor().equals(color) || mad) {
                     if (board.isInBoundsAndEmpty(position.upLeft().upLeft())) {
                         positions.add(position.upLeft().upLeft());
                     }
@@ -95,7 +93,7 @@ public class Checker {
                 Checker downLeft = board.getPieceAt(position.downLeft());
                 if (downLeft == null) {
                     positions.add(position.downLeft());
-                } else if (!downLeft.getColor().equals(color)) {
+                } else if (!downLeft.getColor().equals(color) || mad) {
                     if (board.isInBoundsAndEmpty(position.downLeft().downLeft())) {
                         positions.add(position.downLeft().downLeft());
                     }

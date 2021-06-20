@@ -26,15 +26,15 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+/**
+ * @author Braedon Wooding, and @your name
+ */
 public class CheckerController {
     @FXML
     public GridPane grid;
 
     @FXML
     public HBox startMenu;
-
-    @FXML
-    public CheckBox forceJump;
 
     @FXML
     public CheckBox quackering;
@@ -201,7 +201,7 @@ public class CheckerController {
             this.gameButton.setText("Stop Game");
             turn = CheckerColor.RED;
             this.startMenu.setVisible(false);
-            board = new Checkerboard();
+            board = new Checkerboard(quackering.isSelected());
             grid.setAlignment(Pos.CENTER);
             generateGrid();
         } else {

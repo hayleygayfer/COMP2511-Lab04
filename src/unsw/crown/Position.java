@@ -2,6 +2,9 @@ package unsw.crown;
 
 import java.util.Objects;
 
+/**
+ * @author Braedon Wooding, and @your name
+ */
 public class Position {
     private int row;
     private int col;

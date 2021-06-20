@@ -1,5 +1,8 @@
 package unsw.crown;
 
+/**
+ * @author Braedon Wooding, and @your name
+ */
 public enum CheckerColor {
     WHITE("white", "purple"),
     RED("red", "silver");
