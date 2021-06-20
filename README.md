@@ -18,49 +18,6 @@ An individual repository for you for this lab has been created for you on the CS
 
 `git clone gitlab@gitlab.cse.unsw.EDU.AU:COMP2511/21T2/students/z555555/21T2-cs2511-lab04.git`
 
-## Lab 04 - Exercise - Hotel Refactor 🏨
-
-Inside `src/refactor`, there is a poorly designed solution for a Hotel Booking System according to the following requirements:
-
-* Hotels have a name and a series of rooms
-* Rooms are of size Small, Medium or Large
-* Rooms can be booked from a start date to a checkout date
-* A user of the system can request a booking by specifying a start date, and end date and a room size. If the room is successfully booked, they receive the booking number. If there is no available room of the given size for those dates, `-1` is returned.
-
-### Refactoring
-
-Refactor the code so that it adheres to design principles taught in lectures. Be prepared to explain your design changes to your lab assistant during marking. 
-
-Things to consider include the Law of Demeter, Single Responsibility Principle, Open-Closed Principle, and using *enums*. An *enum* is a special sort class that represents a group of constants:
-
-```java
-enum CodingLevel {
-    Greenie,
-    Novice,
-    Amateur,
-    Intermediate,
-    Advanced,
-    Pro,
-    Expert,
-    Elite;
-}
-```
-
-### Test Driven Refactoring
-
-A very basic test is provided for you in `HotelBookingSystemTest.java` which currently passes. You should complete this exercise in the following order:
-
-1. Design a single refactor to the code
-2. Write out stubs for any new functions
-3. Write JUnit tests for those new functions (they should fail)
-4. Implement the functions so that the tests pass
-6. Commit your changes with a message explaining the refactor (your lab assistant will check this during marking)
-7. Repeat for each refactor!
-
-This might seem slower than just doing it all in one go, but for larger systems, incremental completion is the only way to go about it (everything becomes a huge mess otherwise).
-
-Remember to unit test individual components (`Hotel`, `Booking` classes and their methods) as well as the system working as a whole. You can modify/delete the provided test as you like.
-
 ## Lab 04 - Exercise - The State of Quaint 🦆
 
 Quaint, as explained in the tutorial, is a paint application that has the following requirements;
@@ -76,10 +33,8 @@ Quaint, as explained in the tutorial, is a paint application that has the follow
 - The ability to scroll to change the stroke width
 - The ability to save my picture out as a png to a location of my choosing
 - The ability to select a region then perform operations on it, regions are selected via a box
-  - You can cut the region out using ctrl + x, a cut region shouldn't remove itself till it's pasted
   - You can delete a region with ctrl + d
-  - You can copy a region with ctrl + c
-  - You can paste a cut or copied region with ctrl + v.  After deselecting the region (clicking anywhere or pressing escape) all copy history is lost.
+  - You can paste a region with ctrl + v, this won't clear the old region and will just paste a new region that is already selected at the cursor.
 - The ability to load an image onto the canvas by clicking the image load tool, selecting the image you want to insert, then clicking where you want to insert it.
   - After placing the image it should return to just the simple cursor.
   - Scrolling should change how big the image being placed is scaled.
@@ -164,6 +119,7 @@ Hints:
 
 - Look at the unused interface `CheckerStrategy`.
 - A checker piece could have multiple strategies that it aggregates.
+- You don't have to write *ANY* JavaFX code here, you'll want to grab the code that renders the checkers and move it around but you won't have to change it.
 - How are you going to handle force jump?
 - Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.
 - `forceJump.isSelected()` (and similar for quackering) can be used to determine if the checkbox is ticked.
