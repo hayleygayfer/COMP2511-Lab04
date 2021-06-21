@@ -241,20 +241,15 @@ Delete the *symlink_javafx* symbolic link, then download and unzip the latest ve
 
 ```diff
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    // NOTE - we turn assertions on to help debugging, although they shouldn't be used in production code
-    "version": "0.2.0",
-    "cwd": "${workspaceRoot}",
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - LoopManiaApplication",
+            "name": "Launch CheckerApplication",
             "request": "launch",
--           "vmArgs": "--module-path ./lib/symlink_javafx --add-modules javafx.controls,javafx.fxml -enableassertions",
-+           "vmArgs": "--module-path ./lib --add-modules javafx.controls,javafx.fxml -enableassertions",
-            "mainClass": "unsw.loopmania.LoopManiaApplication"
+            "mainClass": "unsw.crown.CheckerApplication",
+            "projectName": "lab04_acb2551e",
+-           "vmArgs": "--module-path ./lib/symlink_javafx --add-modules javafx.controls,javafx.fxml,javafx.media -enableassertions"
++           "vmArgs": "--module-path ./lib --add-modules javafx.controls,javafx.fxml,javafx.media -enableassertions"
         }
     ]
 }
