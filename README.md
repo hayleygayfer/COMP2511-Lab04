@@ -209,6 +209,8 @@ Hints:
 - You don't have to write *ANY* JavaFX code here, you'll want to grab the code that renders the checkers and move it around but you won't have to change it.
 - Don't worry about the recursion of multiple jumps, the CheckerController handles this by checking if any of the valid positions can be used to jump again.  Just focus on the jumps you can make from a given position.
 
+Finally, think about whether or not in this specific case the code really benefited from the strategy pattern, could you have applied the state pattern?  Compare it to the cases of strategy + state from tute with your tutor.
+
 One final hint if you are really struggling (behind a spoiler just for those who want to push themselves):
 
 <details>
