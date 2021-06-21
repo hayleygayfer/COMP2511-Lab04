@@ -9,5 +9,11 @@ public interface CheckerStrategy {
     // what about rendering?
     // maybe some sort of 'renderSpecial' to add the crowns/duck icons.
 
-    public void addValidPositions(List<Position> validPositions, Checkerboard board, Position position, Color color);
+    // this is more of an aggregation idea...
+    // public void addValidPositions(...);
+
+    // what about something like?
+    // public void isValid(...);
+
+    // is one better?  up to you how you wish to approach this...
 }

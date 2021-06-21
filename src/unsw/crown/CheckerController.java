@@ -157,7 +157,7 @@ public class CheckerController {
                 addPossiblePosition(pos, "purple");
             }
         }
-        return validJumps++;
+        return validJumps > 0;
     }
 
     private void addPossiblePosition(Position pos, String color) {
