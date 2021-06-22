@@ -170,7 +170,14 @@ The table is as below;
 
 ## Lab 04 - Exercise - The Crown's Gambit - Strategy Pattern 👑
 
-For this exercise,  you need to refactor the code provided that already implements the following game "The Crown's Gambit". Please note that you need to use the Strategy pattern in your refactoring. In order to properly refactor your code, you need to first understand the rules of this interesting game, which are provided below. Considering the game is already implemented, in most of the cases you simply need to copy/paste the code. However, this exercise will demonstrate how you can improve your design by using a very useful Strategy Pattern. 
+For this exercise,  you need to refactor the code provided that mostly implements the following game "The Crown's Gambit". Please note that you need to use the Strategy pattern in your refactoring. In order to properly refactor your code, you need to first understand the rules of this interesting game, which are provided below. Considering the game is mostly already implemented, in **most** of the cases you simply need to copy/paste the code. However, this exercise will demonstrate how you can improve your design by using a very useful Strategy Pattern.
+
+The only things that aren't currently implemented
+- All possible moves that a checker can make, currently we only check for Up Left for red checkers and Down Right for white checkers
+  - The possible moves we don't include are Up Right and Down Left, these are trivial to add (just copying + pasting the if statement block and changing the directions) so weren't included to keep the function shorter.  You can find them in Checker.java
+- Mad checkers turning other friendly checkers mad when jumping over them
+  - How you do this will depend on your design as a hint have a look at how a piece gets crowned in Checkerboard.java
+  - You may want to refactor crowning as well as part of your design
 
 Checkers is a classic game with some relatively simple rules.
 
@@ -199,6 +206,13 @@ There are is a single options that is configurable upon defining a new game, the
 <img src="imgs/quackening.png" height=300 />
 
 Your task is to refactor the code such that it uses the strategy pattern to implement both the rendering of the checkers (i.e. the drawing of the circles) as well as the logic for which positions are valid.
+
+To reiterate the only things that aren't currently implemented
+- All possible moves that a checker can make, currently we only check for Up Left for red checkers and Down Right for white checkers
+  - The possible moves we don't include are Up Right and Down Left, these are trivial to add (just copying + pasting the if statement block and changing the directions) so weren't included to keep the function shorter.  You can find them in Checker.java
+- Mad checkers turning other friendly checkers mad when jumping over them
+  - How you do this will depend on your design as a hint have a look at how a piece gets crowned in Checkerboard.java
+  - You may want to refactor crowning as well as part of your design
 
 Hints:
 
