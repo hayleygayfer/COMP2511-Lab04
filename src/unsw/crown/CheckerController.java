@@ -139,6 +139,12 @@ public class CheckerController {
         List<Position> positions = checker.validPositions(board, source);
         int validJumps = 0;
         for (Position pos : positions) {
+            if (!board.isInBoundsAndEmpty(pos) ||
+                (possiblePredecessors.containsKey(pos) && possiblePredecessors.get(pos).contains(source))) {
+                // be nice to students and skip bad positions
+                continue;
+            }
+            
             possiblePredecessors.putIfAbsent(pos, new HashSet<>());
             possiblePredecessors.get(pos).add(source);
 
