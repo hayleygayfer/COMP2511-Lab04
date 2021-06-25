@@ -146,11 +146,11 @@ public class CheckerController {
             }
             
             possiblePredecessors.putIfAbsent(pos, new HashSet<>());
-            possiblePredecessors.get(pos).add(source);
 
             // check if this jumps over a piece
             Checker c = board.getPieceAt(Position.midPointPosition(source, pos));
             if (c != null && c != checker) {
+                possiblePredecessors.get(pos).add(source);
                 String color;
                 if (recursivelyAddCheckerPositions(checker, pos)) {
                     color = "silver";
@@ -160,6 +160,7 @@ public class CheckerController {
                 addPossiblePosition(pos, color);
                 validJumps++;
             } else if (board.getPieceAt(source) != null) {
+                possiblePredecessors.get(pos).add(source);
                 addPossiblePosition(pos, "purple");
             }
         }
