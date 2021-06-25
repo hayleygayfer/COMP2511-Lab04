@@ -140,7 +140,8 @@ public class CheckerController {
         int validJumps = 0;
         for (Position pos : positions) {
             if (!board.isInBoundsAndEmpty(pos) ||
-                (possiblePredecessors.containsKey(pos) && possiblePredecessors.get(pos).contains(source))) {
+                (possiblePredecessors.containsKey(pos) && possiblePredecessors.get(pos).contains(source)) ||
+                (possiblePredecessors.containsKey(source) && possiblePredecessors.get(source).contains(pos))) {
                 // be nice to students and skip bad positions
                 continue;
             }
