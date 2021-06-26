@@ -157,14 +157,15 @@ The table is as below;
 +-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
 |            Action             |   Condition    | AspectRatioDragging |      Dragging       |        Shape        | Simple |  Selected   |
 +-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
-| Shift Released                |                | ?     ?     ?       |                     |                     |        |             |
+| Shift Released                |                | DraggingState       |                     |                     |        |             |
 | Shift Pressed                 |                |                     | AspectRatioDragging |                     |        |             |
-| Primary Mouse Button Pressed  | Shift Key Held |                     |                     | ?    ?      ?       |        |             |
+| Primary Mouse Button Pressed  | Shift Key Held |                     |                     | AspectRatioDragging |        |             |
 | Primary Mouse Button Pressed  |                |                     |                     | DraggingState       |        |             |
-| Primary Mouse Button Released |  ?   ?   ?     | SelectedState       | SelectedState       |                     |        |             |
-| Primary Mouse Button Released |                | ShapeState          | ?    ?    ?         |                     |        |             |
-| Escape Key                    |                | ?    ?   ?          | SimpleState         | SimpleState         |        | ?   ?   ?   |
-| Ctrl + D & Clicking Outside   |                |                     |                     |                     |        | ?   ?   ?   |
+| Primary Mouse Button Released | Box-select     | SelectedState       | SelectedState       |                     |        |             |
+| Primary Mouse Button Released |                | ShapeState          | prior ShapeState    |                     |        |             |
+| Escape Key                    |                | SimpleState         | SimpleState         | SimpleState         |        | SimpleState
+|
+| Ctrl + D & Clicking Outside   |                |                     |                     |                     |        | prior ShapeState  |
 +-------------------------------+----------------+---------------------+---------------------+---------------------+--------+-------------+
 ```
 
