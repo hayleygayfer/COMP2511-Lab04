@@ -139,12 +139,19 @@ public class CheckerController {
         List<Position> positions = checker.validPositions(board, source);
         int validJumps = 0;
         for (Position pos : positions) {
+            if (!board.isInBoundsAndEmpty(pos) ||
+                (possiblePredecessors.containsKey(pos) && possiblePredecessors.get(pos).contains(source)) ||
+                (possiblePredecessors.containsKey(source) && possiblePredecessors.get(source).contains(pos))) {
+                // be nice to students and skip bad positions
+                continue;
+            }
+            
             possiblePredecessors.putIfAbsent(pos, new HashSet<>());
-            possiblePredecessors.get(pos).add(source);
 
             // check if this jumps over a piece
             Checker c = board.getPieceAt(Position.midPointPosition(source, pos));
             if (c != null && c != checker) {
+                possiblePredecessors.get(pos).add(source);
                 String color;
                 if (recursivelyAddCheckerPositions(checker, pos)) {
                     color = "silver";
@@ -154,6 +161,7 @@ public class CheckerController {
                 addPossiblePosition(pos, color);
                 validJumps++;
             } else if (board.getPieceAt(source) != null) {
+                possiblePredecessors.get(pos).add(source);
                 addPossiblePosition(pos, "purple");
             }
         }
