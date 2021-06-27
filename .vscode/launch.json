@@ -5,8 +5,9 @@
             "name": "Launch CheckerApplication",
             "request": "launch",
             "mainClass": "unsw.crown.CheckerApplication",
-            "projectName": "lab04_acb2551e",
+            "projectName": "21T2-cs2511-lab04_db31e953",
             "vmArgs": "--module-path ./lib --add-modules javafx.controls,javafx.fxml,javafx.media -enableassertions"
         }
     ]
 }
+

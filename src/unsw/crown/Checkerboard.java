@@ -20,6 +20,7 @@ public class Checkerboard {
     }
 
     public void moveChecker(Position position, Position endPosition) {
+        Checker movedChecker = board[position.getCol()][position.getRow()];
         if (isInBounds(position) && isInBounds(endPosition)) {
             board[endPosition.getCol()][endPosition.getRow()] = board[position.getCol()][position.getRow()];
             if (endPosition.getRow() == 0 || endPosition.getRow() == BOARD_SIZE - 1) {
@@ -30,8 +31,14 @@ public class Checkerboard {
 
             Position midPoint = Position.midPointPosition(position, endPosition);
             if (midPoint.equals(endPosition) == false && midPoint.equals(position) == false) {
-                board[midPoint.getCol()][midPoint.getRow()] = null;
+                Checker midChecker = board[midPoint.getCol()][midPoint.getRow()];
+                if (movedChecker.isMad() == true && midChecker.getColor().equals(movedChecker.getColor())) {
+                    midChecker.setMad();
+                } else {
+                    board[midPoint.getCol()][midPoint.getRow()] = null;
+                }
             }
+
         }
     }
 
